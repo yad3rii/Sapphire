@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль — Sapphire{% endblock %}
+
+{% block content %}
+<section class="profile-page">
+    <div class="container">
+        <div class="profile-card">
+            <div class="profile-avatar">
+                {% if user.profile.avatar %}
+                    <img src="{{ user.profile.avatar.url }}" alt="Аватар">
+                {% else %}
+                    <div class="avatar-placeholder">
+                        {{ user.username|first|upper }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="profile-info">
+                <h1>{{ user.profile.nickname|default:user.username }}</h1>
+                <p class="profile-username">@{{ user.username }}</p>
+
+                {% if user.profile.bio %}
+                    <p class="profile-bio">{{ user.profile.bio }}</p>
+                {% else %}
+                    <p class="profile-bio">Описание профиля пока не заполнено.</p>
+                {% endif %}
+
+                <div class="profile-stats">
+                    <div>
+                        <span>{{ user.profile.balance }} грн</span>
+                        <p>Баланс</p>
+                    </div>
+
+                    <div>
+                        <span>{{ user.profile.rating }}</span>
+                        <p>Рейтинг</p>
+                    </div>
+
+                    <div>
+                        <span>{{ user.profile.successful_deals }}</span>
+                        <p>Сделки</p>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <a href="{% url 'users:edit_profile' %}" class="btn">Редактировать</a>
+                    <a href="{% url 'users:logout' %}" class="btn btn-outline">Выйти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

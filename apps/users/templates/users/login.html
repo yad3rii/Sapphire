@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Вход — Sapphire{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+    <div class="auth-card">
+        <h1>Вход</h1>
+        <p>Войдите в аккаунт Sapphire.</p>
+
+        <form method="post" class="form">
+            {% csrf_token %}
+
+            <label>Логин</label>
+            {{ form.username }}
+
+            <label>Пароль</label>
+            {{ form.password }}
+
+            {% if form.errors %}
+                <div class="form-errors">
+                    Неверный логин или пароль.
+                </div>
+            {% endif %}
+
+            <button type="submit" class="btn">Войти</button>
+        </form>
+
+        <div class="auth-bottom">
+            Нет аккаунта?
+            <a href="{% url 'users:register' %}">Зарегистрироваться</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

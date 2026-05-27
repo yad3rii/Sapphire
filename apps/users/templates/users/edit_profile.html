@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Редактирование профиля — Sapphire{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+    <div class="auth-card">
+        <h1>Редактирование профиля</h1>
+
+        <form method="post" enctype="multipart/form-data" class="form">
+            {% csrf_token %}
+
+            <label>Логин</label>
+            {{ user_form.username }}
+
+            <label>Email</label>
+            {{ user_form.email }}
+
+            <label>Аватар</label>
+            {{ profile_form.avatar }}
+
+            <label>Никнейм</label>
+            {{ profile_form.nickname }}
+
+            <label>Описание</label>
+            {{ profile_form.bio }}
+
+            <label class="checkbox-label">
+                {{ profile_form.is_seller }}
+                Я продавец
+            </label>
+
+            {% if user_form.errors or profile_form.errors %}
+                <div class="form-errors">
+                    {{ user_form.errors }}
+                    {{ profile_form.errors }}
+                </div>
+            {% endif %}
+
+            <button type="submit" class="btn">Сохранить</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

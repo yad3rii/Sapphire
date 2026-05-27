@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация — Sapphire{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+    <div class="auth-card">
+        <h1>Регистрация</h1>
+        <p>Создайте аккаунт, чтобы покупать и продавать игровые товары.</p>
+
+        <form method="post" class="form">
+            {% csrf_token %}
+
+            <label>Логин</label>
+            {{ form.username }}
+
+            <label>Email</label>
+            {{ form.email }}
+
+            <label>Никнейм</label>
+            {{ form.nickname }}
+
+            <label>Пароль</label>
+            {{ form.password1 }}
+
+            <label>Повторите пароль</label>
+            {{ form.password2 }}
+
+            {% if form.errors %}
+                <div class="form-errors">
+                    {{ form.errors }}
+                </div>
+            {% endif %}
+
+            <button type="submit" class="btn">Зарегистрироваться</button>
+        </form>
+
+        <div class="auth-bottom">
+            Уже есть аккаунт?
+            <a href="{% url 'users:login' %}">Войти</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
