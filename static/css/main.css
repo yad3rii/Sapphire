@@ -141,10 +141,51 @@ select {
     color: var(--text-main);
 }
 
-.hero h1::after {
-    content: ".";
+.hero-title {
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.dots {
+    display: inline-flex;
+    margin-left: 4px;
     color: var(--accent);
     text-shadow: 0 0 36px rgba(56, 189, 248, 0.7);
+}
+
+.dots span {
+    opacity: 0;
+    animation: dotBlink 1.4s infinite;
+}
+
+.dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.dots span:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.dots span:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+@keyframes dotBlink {
+    0% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 .hero p {
