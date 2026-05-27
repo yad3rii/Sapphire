@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.env
+db.sqlite3
+/media/*
+!/media/avatars/
+!/media/listings/
+!/media/avatars/.gitkeep
+!/media/listings/.gitkeep
+.venv/
+venv/
