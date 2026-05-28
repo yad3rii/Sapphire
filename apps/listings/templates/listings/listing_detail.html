@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}{{ listing.title }} — Sapphire{% endblock %}
+
+{% block content %}
+<section class="page">
+    <div class="container">
+        <a href="{% url 'listings:listing_list' %}" class="back-link">← Все объявления</a>
+
+        <div class="listing-detail">
+            <div class="listing-detail-image">
+                {% if listing.image %}
+                    <img src="{{ listing.image.url }}" alt="{{ listing.title }}">
+                {% else %}
+                    <div class="listing-big-placeholder">Sapphire</div>
+                {% endif %}
+            </div>
+
+            <div class="listing-detail-info">
+                <div class="listing-meta">
+                    <span>{{ listing.game.title }}</span>
+                    {% if listing.category %}
+                        <span>{{ listing.category.title }}</span>
+                    {% endif %}
+                    <span>{{ listing.get_status_display }}</span>
+                </div>
+
+                <h1>{{ listing.title }}</h1>
+
+                <div class="listing-price">{{ listing.price }} грн</div>
+
+                <p class="listing-description">{{ listing.description }}</p>
+
+                {% if listing.delivery_info %}
+                    <div class="info-box">
+                        <h3>Как будет передан товар</h3>
+                        <p>{{ listing.delivery_info }}</p>
+                    </div>
+                {% endif %}
+
+                <div class="seller-box">
+                    <h3>Продавец</h3>
+                    <p>@{{ listing.seller.username }}</p>
+                </div>
+
+                <div class="listing-actions">
+                    <a href="#" class="btn">Купить</a>
+
+                    {% if user == listing.seller %}
+                        <a href="{% url 'listings:listing_update' listing.slug %}" class="btn btn-outline">Редактировать</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

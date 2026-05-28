@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Объявления — Sapphire{% endblock %}
+
+{% block content %}
+<section class="page">
+    <div class="container">
+        <div class="page-head">
+            <div>
+                <h1>Объявления</h1>
+                <p>Игровые товары, аккаунты, валюта и услуги от продавцов Sapphire.</p>
+            </div>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'listings:listing_create' %}" class="btn">Создать объявление</a>
+            {% else %}
+                <a href="{% url 'users:login' %}" class="btn">Войти для продажи</a>
+            {% endif %}
+        </div>
+
+        <form method="get" class="search-form">
+            <input type="text" name="q" placeholder="Найти товар или услугу..." value="{{ query|default:'' }}">
+            <button type="submit" class="btn">Поиск</button>
+        </form>
+
+        {% if listings %}
+            <div class="card-grid">
+                {% for listing in listings %}
+                    <a href="{% url 'listings:listing_detail' listing.slug %}" class="card listing-card">
+                        {% if listing.image %}
+                            <img src="{{ listing.image.url }}" alt="{{ listing.title }}">
+                        {% else %}
+                            <div class="listing-image-placeholder">Sapphire</div>
+                        {% endif %}
+
+                        <div class="listing-card-content">
+                            <div class="listing-meta">
+                                <span>{{ listing.game.title }}</span>
+                                {% if listing.category %}
+                                    <span>{{ listing.category.title }}</span>
+                                {% endif %}
+                            </div>
+
+                            <h2>{{ listing.title }}</h2>
+                            <p>{{ listing.description|truncatechars:110 }}</p>
+
+                            <div class="listing-bottom">
+                                <strong>{{ listing.price }} грн</strong>
+                                <span>@{{ listing.seller.username }}</span>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-box">
+                <h2>Объявлений пока нет</h2>
+                <p>Создайте первое объявление или добавьте товары через админ-панель.</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

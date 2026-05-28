@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Мои объявления — Sapphire{% endblock %}
+
+{% block content %}
+<section class="page">
+    <div class="container">
+        <div class="page-head">
+            <div>
+                <h1>Мои объявления</h1>
+                <p>Ваши товары, аккаунты и услуги на Sapphire.</p>
+            </div>
+
+            <a href="{% url 'listings:listing_create' %}" class="btn">Создать объявление</a>
+        </div>
+
+        {% if listings %}
+            <div class="card-grid">
+                {% for listing in listings %}
+                    <a href="{% url 'listings:listing_detail' listing.slug %}" class="card listing-card">
+                        {% if listing.image %}
+                            <img src="{{ listing.image.url }}" alt="{{ listing.title }}">
+                        {% else %}
+                            <div class="listing-image-placeholder">Sapphire</div>
+                        {% endif %}
+
+                        <div class="listing-card-content">
+                            <div class="listing-meta">
+                                <span>{{ listing.get_status_display }}</span>
+                                <span>{{ listing.game.title }}</span>
+                            </div>
+
+                            <h2>{{ listing.title }}</h2>
+                            <p>{{ listing.description|truncatechars:110 }}</p>
+
+                            <div class="listing-bottom">
+                                <strong>{{ listing.price }} грн</strong>
+                                <span>Кол-во: {{ listing.quantity }}</span>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-box">
+                <h2>У вас пока нет объявлений</h2>
+                <p>Создайте первое объявление и начните продавать.</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

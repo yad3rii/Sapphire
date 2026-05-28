@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Редактировать объявление — Sapphire{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+    <div class="auth-card listing-form-card">
+        <h1>Редактировать объявление</h1>
+        <p>{{ listing.title }}</p>
+
+        <form method="post" enctype="multipart/form-data" class="form">
+            {% csrf_token %}
+
+            <label>Игра</label>
+            {{ form.game }}
+
+            <label>Категория</label>
+            {{ form.category }}
+
+            <label>Название</label>
+            {{ form.title }}
+
+            <label>Slug</label>
+            {{ form.slug }}
+
+            <label>Описание</label>
+            {{ form.description }}
+
+            <label>Цена</label>
+            {{ form.price }}
+
+            <label>Количество</label>
+            {{ form.quantity }}
+
+            <label>Изображение</label>
+            {{ form.image }}
+
+            <label>Информация о передаче товара</label>
+            {{ form.delivery_info }}
+
+            <label>Статус</label>
+            {{ form.status }}
+
+            {% if form.errors %}
+                <div class="form-errors">
+                    {{ form.errors }}
+                </div>
+            {% endif %}
+
+            <button type="submit" class="btn">Сохранить</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

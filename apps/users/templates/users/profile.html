@@ -44,7 +44,9 @@
                 </div>
 
                 <div class="profile-actions">
-                    <a href="{% url 'users:edit_profile' %}" class="btn">Редактировать</a>
+                    <a href="{% url 'listings:my_listings' %}" class="btn">Мои объявления</a>
+                    <a href="{% url 'listings:listing_create' %}" class="btn btn-outline">Создать объявление</a>
+                    <a href="{% url 'users:edit_profile' %}" class="btn btn-outline">Редактировать</a>
                     <a href="{% url 'users:logout' %}" class="btn btn-outline">Выйти</a>
                 </div>
             </div>
