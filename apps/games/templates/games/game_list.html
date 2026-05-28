@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Игры — Sapphire{% endblock %}
+
+{% block content %}
+<section class="page">
+    <div class="container">
+        <div class="page-head">
+            <div>
+                <h1>Игры</h1>
+                <p>Выберите игру, чтобы посмотреть доступные категории товаров и услуг.</p>
+            </div>
+        </div>
+
+        {% if games %}
+            <div class="card-grid">
+                {% for game in games %}
+                    <a href="{% url 'games:game_detail' game.slug %}" class="card game-card">
+                        {% if game.image %}
+                            <img src="{{ game.image.url }}" alt="{{ game.title }}">
+                        {% endif %}
+
+                        <div class="game-card-content">
+                            <h2>{{ game.title }}</h2>
+
+                            {% if game.description %}
+                                <p>{{ game.description|truncatechars:120 }}</p>
+                            {% else %}
+                                <p>Аккаунты, валюта, услуги и игровые товары.</p>
+                            {% endif %}
+
+                            {% if game.is_popular %}
+                                <span class="badge">Популярное</span>
+                            {% endif %}
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-box">
+                <h2>Игры пока не добавлены</h2>
+                <p>Добавьте игры через админ-панель Django.</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
