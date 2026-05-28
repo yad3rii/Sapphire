@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}{{ game.title }} — Sapphire{% endblock %}
+
+{% block content %}
+<section class="page">
+    <div class="container">
+        <div class="game-detail">
+            <div class="game-detail-info">
+                <a href="{% url 'games:game_list' %}" class="back-link">← Все игры</a>
+
+                <h1>{{ game.title }}</h1>
+
+                {% if game.description %}
+                    <p>{{ game.description }}</p>
+                {% else %}
+                    <p>Выберите категорию, чтобы посмотреть товары, аккаунты и услуги по этой игре.</p>
+                {% endif %}
+
+                {% if game.is_popular %}
+                    <span class="badge">Популярное</span>
+                {% endif %}
+            </div>
+
+            {% if game.image %}
+                <div class="game-detail-image">
+                    <img src="{{ game.image.url }}" alt="{{ game.title }}">
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="section-title">
+            <h2>Категории</h2>
+            <p>Аккаунты, валюта, предметы, буст, услуги и другие предложения.</p>
+        </div>
+
+        {% if categories %}
+            <div class="card-grid">
+                {% for category in categories %}
+                    <div class="card category-card">
+                        <h3>{{ category.title }}</h3>
+
+                        {% if category.description %}
+                            <p>{{ category.description }}</p>
+                        {% else %}
+                            <p>Предложения продавцов по выбранной категории.</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-box">
+                <h2>Категорий пока нет</h2>
+                <p>Добавьте категории для этой игры через админ-панель.</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
