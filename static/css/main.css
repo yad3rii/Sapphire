@@ -593,3 +593,140 @@ select {
         border-radius: 22px;
     }
 }
+
+.page-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 34px;
+}
+
+.page-head h1 {
+    margin-bottom: 12px;
+}
+
+.game-card {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+}
+
+.game-card img {
+    width: 100%;
+    height: 160px;
+    display: block;
+    object-fit: cover;
+    background: #0f172a;
+}
+
+.game-card-content {
+    padding: 20px;
+}
+
+.game-card-content h2 {
+    font-size: 24px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 12px;
+    padding: 7px 11px;
+    border-radius: 999px;
+    background: rgba(56, 189, 248, 0.14);
+    border: 1px solid rgba(56, 189, 248, 0.34);
+    color: #7dd3fc;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.empty-box {
+    padding: 34px;
+    border-radius: 24px;
+    background: rgba(15, 23, 42, 0.76);
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+}
+
+.empty-box h2 {
+    margin: 0 0 10px;
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.empty-box p {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.game-detail {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 34px;
+    align-items: center;
+    margin-bottom: 46px;
+}
+
+.game-detail-info {
+    padding: 34px;
+    border-radius: 28px;
+    background: rgba(15, 23, 42, 0.76);
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    box-shadow: var(--shadow);
+}
+
+.game-detail-info h1 {
+    margin-top: 14px;
+}
+
+.game-detail-image {
+    overflow: hidden;
+    border-radius: 28px;
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    box-shadow: var(--shadow);
+}
+
+.game-detail-image img {
+    width: 100%;
+    height: 300px;
+    display: block;
+    object-fit: cover;
+}
+
+.back-link {
+    display: inline-flex;
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-weight: 900;
+}
+
+.section-title {
+    margin: 20px 0 24px;
+}
+
+.section-title h2 {
+    margin: 0 0 8px;
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.section-title p {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.category-card h3 {
+    font-size: 24px;
+}
+
+@media (max-width: 860px) {
+    .game-detail {
+        grid-template-columns: 1fr;
+    }
+
+    .game-detail-image img {
+        height: 240px;
+    }
+}
