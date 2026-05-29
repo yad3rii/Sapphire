@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Заказ #{{ order.id }} — Sapphire{% endblock %}
+
+{% block content %}
+<section class="page">
+    <div class="container">
+        <a href="{% url 'orders:order_list' %}" class="back-link">← Мои заказы</a>
+
+        <div class="order-detail">
+            <div class="order-main">
+                <div class="listing-meta">
+                    <span>{{ order.get_status_display }}</span>
+                    <span>{{ order.listing.game.title }}</span>
+                    {% if order.listing.category %}
+                        <span>{{ order.listing.category.title }}</span>
+                    {% endif %}
+                </div>
+
+                <h1>Заказ #{{ order.id }}</h1>
+                <p class="order-subtitle">{{ order.listing.title }}</p>
+
+                <div class="order-info-grid">
+                    <div>
+                        <span>Покупатель</span>
+                        <strong>@{{ order.buyer.username }}</strong>
+                    </div>
+
+                    <div>
+                        <span>Продавец</span>
+                        <strong>@{{ order.seller.username }}</strong>
+                    </div>
+
+                    <div>
+                        <span>Цена</span>
+                        <strong>{{ order.price }} грн</strong>
+                    </div>
+
+                    <div>
+                        <span>Количество</span>
+                        <strong>{{ order.quantity }}</strong>
+                    </div>
+
+                    <div>
+                        <span>Итого</span>
+                        <strong>{{ order.total_price }} грн</strong>
+                    </div>
+
+                    <div>
+                        <span>Дата</span>
+                        <strong>{{ order.created_at|date:"d.m.Y H:i" }}</strong>
+                    </div>
+                </div>
+
+                {% if order.comment %}
+                    <div class="info-box">
+                        <h3>Комментарий</h3>
+                        <p>{{ order.comment }}</p>
+                    </div>
+                {% endif %}
+
+                {% if order.listing.delivery_info %}
+                    <div class="info-box">
+                        <h3>Передача товара</h3>
+                        <p>{{ order.listing.delivery_info }}</p>
+                    </div>
+                {% endif %}
+
+                <div class="listing-actions">
+                    <a href="{% url 'listings:listing_detail' order.listing.slug %}" class="btn btn-outline">
+                        Открыть объявление
+                    </a>
+
+                    {% if user == order.buyer %}
+                        {% if order.status != "completed" and order.status != "cancelled" %}
+                            <a href="{% url 'orders:complete_order' order.id %}" class="btn">
+                                Завершить заказ
+                            </a>
+
+                            <a href="{% url 'orders:cancel_order' order.id %}" class="btn btn-outline">
+                                Отменить заказ
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="order-side">
+                {% if order.listing.image %}
+                    <img src="{{ order.listing.image.url }}" alt="{{ order.listing.title }}">
+                {% else %}
+                    <div class="listing-big-placeholder">Sapphire</div>
+                {% endif %}
+
+                <h2>{{ order.listing.title }}</h2>
+                <p>{{ order.listing.description|truncatechars:160 }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Мои заказы — Sapphire{% endblock %}
+
+{% block content %}
+<section class="page">
+    <div class="container">
+        <div class="page-head">
+            <div>
+                <h1>Мои заказы</h1>
+                <p>Здесь отображаются ваши покупки на Sapphire.</p>
+            </div>
+        </div>
+
+        {% if orders %}
+            <div class="order-list">
+                {% for order in orders %}
+                    <a href="{% url 'orders:order_detail' order.id %}" class="order-card">
+                        <div>
+                            <h2>Заказ #{{ order.id }}</h2>
+                            <p>{{ order.listing.title }}</p>
+                        </div>
+
+                        <div class="order-card-info">
+                            <strong>{{ order.total_price }} грн</strong>
+                            <span>{{ order.get_status_display }}</span>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-box">
+                <h2>Заказов пока нет</h2>
+                <p>Когда вы купите товар или услугу, заказ появится здесь.</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

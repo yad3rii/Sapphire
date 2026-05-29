@@ -31,11 +31,11 @@ body {
     margin: 0;
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
-    background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 34%),
-        radial-gradient(circle at top right, rgba(14, 165, 233, 0.10), transparent 30%),
-        linear-gradient(180deg, #070b16 0%, #020617 100%);
     color: var(--text-main);
+    background:
+        linear-gradient(90deg, rgba(7, 11, 22, 0.96) 0%, rgba(7, 11, 22, 0.88) 28%, rgba(7, 11, 22, 0.72) 55%, rgba(2, 6, 23, 0.92) 100%),
+        linear-gradient(180deg, rgba(3, 10, 24, 0.45) 0%, rgba(2, 6, 23, 0.82) 100%),
+        url("../img/steam-bg.png") center center / cover no-repeat fixed;
 }
 
 a {
@@ -110,25 +110,14 @@ select {
 /* HERO */
 
 .hero {
-    padding: 96px 0 80px;
+    padding: 110px 0 100px;
     position: relative;
 }
 
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 42px auto auto 50%;
-    width: 420px;
-    height: 420px;
-    transform: translateX(-5%);
-    background: rgba(56, 189, 248, 0.10);
-    filter: blur(90px);
-    border-radius: 999px;
-    pointer-events: none;
-}
 
 .hero .container {
     position: relative;
+    z-index: 2;
 }
 
 .hero h1 {
@@ -138,7 +127,8 @@ select {
     line-height: 0.95;
     font-weight: 900;
     letter-spacing: -4px;
-    color: var(--text-main);
+    color: #f8fafc;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
 }
 
 .hero-title {
@@ -190,11 +180,12 @@ select {
 
 .hero p {
     margin: 0 0 36px;
-    max-width: 680px;
+    max-width: 700px;
     font-size: 23px;
     line-height: 1.55;
     font-weight: 600;
-    color: var(--text-soft);
+    color: #dbeafe;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
 }
 
 .hero-actions {
