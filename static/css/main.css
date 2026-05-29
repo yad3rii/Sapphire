@@ -730,3 +730,217 @@ select {
         height: 240px;
     }
 }
+
+.search-form {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 32px;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 15px 16px;
+    border-radius: 14px;
+    border: 1px solid var(--border-light);
+    background: rgba(15, 23, 42, 0.9);
+    color: var(--text-main);
+    outline: none;
+    font-size: 15px;
+}
+
+.search-form input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.listing-card {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+}
+
+.listing-card img,
+.listing-image-placeholder {
+    width: 100%;
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    background:
+        radial-gradient(circle at top, rgba(56, 189, 248, 0.22), transparent 62%),
+        #0f172a;
+    color: var(--accent);
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.listing-card-content {
+    padding: 20px;
+}
+
+.listing-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.listing-meta span {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(56, 189, 248, 0.11);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    color: #7dd3fc;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.listing-card-content h2 {
+    margin: 0 0 10px;
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+.listing-card-content p {
+    margin: 0 0 18px;
+    color: var(--text-muted);
+    line-height: 1.55;
+}
+
+.listing-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.listing-bottom strong {
+    color: var(--accent);
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.listing-bottom span {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.listing-detail {
+    display: grid;
+    grid-template-columns: 430px 1fr;
+    gap: 34px;
+    align-items: start;
+    margin-top: 24px;
+}
+
+.listing-detail-image {
+    overflow: hidden;
+    border-radius: 28px;
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    background: rgba(15, 23, 42, 0.76);
+    box-shadow: var(--shadow);
+}
+
+.listing-detail-image img,
+.listing-big-placeholder {
+    width: 100%;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    background:
+        radial-gradient(circle at top, rgba(56, 189, 248, 0.22), transparent 62%),
+        #0f172a;
+    color: var(--accent);
+    font-size: 40px;
+    font-weight: 900;
+}
+
+.listing-detail-info {
+    padding: 34px;
+    border-radius: 28px;
+    background: rgba(15, 23, 42, 0.76);
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    box-shadow: var(--shadow);
+}
+
+.listing-detail-info h1 {
+    margin: 14px 0 16px;
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.05;
+    font-weight: 900;
+    letter-spacing: -1.6px;
+}
+
+.listing-price {
+    margin-bottom: 22px;
+    color: var(--accent);
+    font-size: 34px;
+    font-weight: 900;
+}
+
+.listing-description {
+    color: var(--text-soft);
+    line-height: 1.75;
+}
+
+.info-box,
+.seller-box {
+    margin-top: 22px;
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(2, 6, 23, 0.45);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.info-box h3,
+.seller-box h3 {
+    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.info-box p,
+.seller-box p {
+    margin: 0;
+    color: var(--text-soft);
+    line-height: 1.6;
+}
+
+.listing-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 26px;
+}
+
+.listing-form-card {
+    width: min(620px, 92%);
+}
+
+@media (max-width: 920px) {
+    .listing-detail {
+        grid-template-columns: 1fr;
+    }
+
+    .listing-detail-image img,
+    .listing-big-placeholder {
+        min-height: 260px;
+    }
+}
+
+@media (max-width: 560px) {
+    .search-form {
+        flex-direction: column;
+    }
+
+    .listing-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

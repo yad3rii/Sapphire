@@ -3,7 +3,7 @@ __pycache__/
 .env
 db.sqlite3
 /media/*
-!/media/avatars/
+/media/avatars/
 !/media/listings/
 !/media/avatars/.gitkeep
 !/media/listings/.gitkeep
