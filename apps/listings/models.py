@@ -32,8 +32,8 @@ class Listing(models.Model):
         blank=True,
         null=True
     )
-    title = models.CharField(max_length=160)
-    slug = models.SlugField(max_length=180, unique=True)
+    title = models.CharField(max_length=60)
+    slug = models.SlugField(max_length=60, unique=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)

@@ -2,8 +2,8 @@ from django.db import models
 
 
 class Game(models.Model):
-    title = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=120, unique=True)
+    title = models.CharField(max_length=40)
+    slug = models.SlugField(max_length=40, unique=True)
     description = models.TextField(blank=True)
     image = models.ImageField(
         upload_to="games/",
@@ -26,8 +26,8 @@ class Category(models.Model):
         on_delete=models.CASCADE,
         related_name="categories"
     )
-    title = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=120)
+    title = models.CharField(max_length=40)
+    slug = models.SlugField(max_length=40)
     description = models.TextField(blank=True)
 
     class Meta:
